@@ -1,4 +1,5 @@
-import '../styles/globals.css'
+import '../styles/globals.css';
+import { Providers } from './providers';
 
 export default function RootLayout({
   children,
@@ -7,10 +8,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body
-      >
-        {children}
+      <body>
+        <Providers>
+          <main className="container mx-auto">{children}</main>
+        </Providers>
       </body>
     </html>
   );
 }
+
