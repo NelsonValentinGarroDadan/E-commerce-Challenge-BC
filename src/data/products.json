@@ -1,0 +1,19 @@
+[
+    {
+      "id": "1",
+      "name": "Zapatilla clásica",
+      "price": 59.99,
+      "description": "Una zapatilla cómoda y versátil.",
+      "category": "calzado",
+      "image": "https://example.com/zapa.jpg"
+    },
+    {
+      "id": "2",
+      "name": "Remera blanca",
+      "price": 19.99,
+      "description": "Remera básica de algodón.",
+      "category": "ropa",
+      "image": "https://example.com/remera.jpg"
+    }
+  ]
+  
