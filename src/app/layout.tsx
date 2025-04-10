@@ -1,5 +1,13 @@
-import '../styles/globals.css';
+import './globals.css'
 import { Providers } from './providers';
+
+export const metadata = {
+  title: 'Tu título',
+  description: 'Tu descripción',
+  icons: {
+    icon: '/favicon.png',
+  },
+};
 
 export default function RootLayout({
   children,

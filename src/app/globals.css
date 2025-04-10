@@ -1,0 +1,27 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-background: #f5f3ff;     /* lavanda claro, muy suave */
+  --color-text: #1e1b4b;           /* azul oscuro, elegante pero legible */
+  --color-primary: #7c3aed;        /* violeta vibrante (consistente con dark) */
+  --color-secondary: #5b21b6;      /* violeta más profundo, para hover o secciones */
+  --color-accent: #2563eb;         /* azul brillante, para botones o links */
+}
+
+
+.dark {
+  --color-background: #1e1e1e;        /* gris oscuro cálido */
+  --color-text: #e4e4e7;              /* gris claro, más suave que blanco puro */
+  --color-primary: #c084fc;           /* lila pastel más contrastante */
+  --color-secondary: #9333ea;         /* violeta vivo */
+  --color-accent: #38bdf8;            /* celeste claro, contrastante */
+}
+
+
+html {
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+*{
+  transition: all 0.5s ease-in-out;
+}
