@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --color-background: #f5f3ff;     /* lavanda claro, muy suave */
+  --color-text: #1e1b4b;           /* azul oscuro, elegante pero legible */
+  --color-primary: #7c3aed;        /* violeta vibrante (consistente con dark) */
+  --color-secondary: #5b21b6;      /* violeta más profundo, para hover o secciones */
+  --color-accent: #2563eb;         /* azul brillante, para botones o links */
+  --font-poppins: "Poppins" , sans-serif;
+  --font-lora: "Lora" , sans-serif;
+  --font-roboto: "Roboto" , sans-serif;
+}
+
+
+.dark {
+  --color-background: #1e1e1e;        /* gris oscuro cálido */
+  --color-text: #e4e4e7;              /* gris claro, más suave que blanco puro */
+  --color-primary: #c084fc;           /* lila pastel más contrastante */
+  --color-secondary: #9333ea;         /* violeta vivo */
+  --color-accent: #38bdf8;            /* celeste claro, contrastante */
+}
+
+
+html {
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+*{
+  transition: all 0.5s ease-in-out;
+}
+/* globals.css o tailwind.css */
+.section-container {
+  @apply flex items-center justify-center w-full max-w-7xl mx-auto p-10;
+}
