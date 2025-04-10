@@ -1,3 +1,4 @@
+import Header from '@/components/header/header';
 import './globals.css'
 import { Providers } from './providers';
 
@@ -18,6 +19,7 @@ export default function RootLayout({
     <html lang="es">
       <body>
         <Providers>
+          <Header />
           <main className="container mx-auto">{children}</main>
         </Providers>
       </body>
