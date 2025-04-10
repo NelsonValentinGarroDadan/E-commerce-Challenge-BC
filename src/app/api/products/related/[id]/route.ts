@@ -2,9 +2,18 @@ import { NextRequest, NextResponse } from 'next/server'
 import { ResponseProductSchema } from '@/schemas/api/product.schema'
 import { getRelatedProducts } from '@/lib/api/products'
 
-export default async function GET(req: NextRequest,{ params }: {params:{id:string}}) {
+export async function GET(req: NextRequest) {
+  const { searchParams } = req.nextUrl;
+    const id = searchParams.get('id');
+    if(!id){
+      return NextResponse.json({
+          statusCode: 400,
+          result: null,
+          errors: [{ name: 'BadRequest', description: 'Se necesita el ID' }]
+          }, { status: 404 })
+    }
   //llama a la funcion getRelatedProducts para obtener los productos relacionados
-  const related = getRelatedProducts(params.id)
+  const related = getRelatedProducts(id)
   //si no encuentra el producto respondemos con un error 404
   if (!related) {
     return NextResponse.json({

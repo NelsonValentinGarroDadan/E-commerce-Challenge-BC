@@ -3,7 +3,7 @@ import { ResponseProductSchema } from '@/schemas/api'
 import { Product } from '@/types/api';
 import { findProductById, findProductByName } from '@/lib/api/products';
 
-export default async function GET(req: NextRequest) {
+export async function GET(req: NextRequest) {
     //extrae los parametros de la url
     const { searchParams } = req.nextUrl;
     const id = searchParams.get('id');
