@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { getCategoryById } from '@/lib/api/categories'
 import { CategorySchema } from '@/schemas/api'
 
-export async function GET(req: NextRequest, { params }: { params: { id: string } }) {
+export default async function GET(req: NextRequest, { params }: { params: { id: string } }) {
     // Llama a la función getCategoryById para obtener la categoría por ID
     const category = await getCategoryById(params.id)
     // Si no encuentra la categoría, respondemos con un error 404

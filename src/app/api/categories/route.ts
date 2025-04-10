@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 import { getCategories } from '@/lib/api/categories'
 import { ResponseCategorySchema } from '@/schemas/api'
 
-export async function GET() {
+export default async function GET() {
     //llama a la funcion getCategories para obtener las categorias
     const categories = await getCategories();
     //configura la respuesta

@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { getPaginatedProducts } from '@/lib/api/products'
 import { ResponseProductSchema } from '@/schemas/api'
 
-export async function GET(req: NextRequest) {
+export default async function GET(req: NextRequest) {
   //extrae los parametros de la url
   const { searchParams } = req.nextUrl
   const category = searchParams.get('category') ?? undefined
