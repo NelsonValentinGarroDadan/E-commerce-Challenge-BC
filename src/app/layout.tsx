@@ -1,6 +1,7 @@
-import Header from '@/components/header/header';
+import Header from '@/app/components/header/header';
 import './globals.css'
 import { Providers } from './providers';
+import Footer from './components/footer';
 
 export const metadata = {
   title: 'Tu título',
@@ -21,6 +22,7 @@ export default function RootLayout({
         <Providers>
           <Header />
           <main className="container mx-auto">{children}</main>
+          <Footer />
         </Providers>
       </body>
     </html>

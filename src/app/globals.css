@@ -29,3 +29,7 @@ html {
 *{
   transition: all 0.5s ease-in-out;
 }
+/* globals.css o tailwind.css */
+.section-container {
+  @apply flex items-center justify-center w-full max-w-7xl mx-auto p-10;
+}
