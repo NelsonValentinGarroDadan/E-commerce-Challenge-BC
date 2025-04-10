@@ -1,8 +1,8 @@
-import { NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server'
 import { ResponseProductSchema } from '@/schemas/api/product.schema'
 import { getRelatedProducts } from '@/lib/api/products'
 
-export async function GET({ params }: {params:{id:string}}) {
+export async function GET(req: NextRequest,{ params }: {params:{id:string}}) {
   //llama a la funcion getRelatedProducts para obtener los productos relacionados
   const related = getRelatedProducts(params.id)
   //si no encuentra el producto respondemos con un error 404
