@@ -1,15 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getPaginatedProducts } from '@/lib/api/products'
-import { ResponseProductSchema } from '@/schemas/api'
+import { ResponseProductsSchema } from '@/schemas/api'
 
 export async function GET(req: NextRequest) {
   //extrae los parametros de la url
   const { searchParams } = req.nextUrl
   const category = searchParams.get('category') ?? undefined
+  const name = searchParams.get('name') || undefined
   const page = parseInt(searchParams.get('page') || '1')
   const limit = parseInt(searchParams.get('limit') || '10')
   //llama a la funcion getPaginatedProducts para obtener los productos paginados
-  const result = getPaginatedProducts({ category, page, limit })
+  const result = getPaginatedProducts({name , category, page, limit })
   //configura la respuesta
   const response = {
     statusCode: 200,
@@ -23,7 +24,7 @@ export async function GET(req: NextRequest) {
     }
   }
   //valida la respuesta con el schema de respuesta
-  const parsed = ResponseProductSchema.safeParse(response)
+  const parsed = ResponseProductsSchema.safeParse(response)
   if (!parsed.success) {
     return NextResponse.json({
       statusCode: 500,

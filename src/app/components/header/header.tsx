@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import NavBar from "./components/navbar"
 import HeaderActions from "./components/headerActions";
 import { Menu, X } from "lucide-react";
+import Link from "next/link";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
@@ -27,7 +28,7 @@ export default function Header() {
       `}
     >
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
-        <span className="text-background font-bold text-lg font-lora">TechStore</span>
+        <Link href="/" className="text-background font-bold text-lg font-lora">TechStore</Link>
         <button
           className="md:hidden text-background z-50"
           onClick={handleLinkClick}

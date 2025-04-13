@@ -11,7 +11,10 @@ export const ProductSchema = z.object({
     image: z.string().url()
 })
 
-export const ResponseProductSchema = BaseResponseSchema(
+export const ResponseProductsSchema = BaseResponseSchema(
     ProductSchema.array(),
     PaginationMetaSchema
+);
+export const ResponseProductSchema = BaseResponseSchema(
+    ProductSchema
 );

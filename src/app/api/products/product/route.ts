@@ -1,27 +1,22 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { ResponseProductSchema } from '@/schemas/api'
 import { Product } from '@/types/api';
-import { findProductById, findProductByName } from '@/lib/api/products';
+import { findProductById } from '@/lib/api/products';
 
 export async function GET(req: NextRequest) {
     //extrae los parametros de la url
     const { searchParams } = req.nextUrl;
     const id = searchParams.get('id');
-    const name = searchParams.get('name')?.toLowerCase();
-    if(!id && !name){
+    if(!id){
         return NextResponse.json({
             statusCode: 400,
             result: null,
-            errors: [{ name: 'BadRequest', description: 'Se necesita el ID o el NAME' }]
+            errors: [{ name: 'BadRequest', description: 'Se necesita el ID' }]
             }, { status: 404 })
     }
     let result: Product | null = null;
-    // llamamos a las funciones para traer el producto segun se busque
-    if (id) {
-        result = findProductById(id)
-    } else if (name) {
-        result = findProductByName(name)
-    }
+    // llamamos a la funcion para traer el producto 
+    if (id) result = findProductById(id)
     //validamos que el producto exista sino se envia un 404
     if (!result) {
         return NextResponse.json({

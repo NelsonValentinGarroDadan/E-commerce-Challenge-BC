@@ -14,7 +14,7 @@ export default function ProductCard({id,image,name,price}:Product) {
                             alt={`img-${name}`}
                             fill
                             style={{ objectFit: "cover" }}
-                            sizes="100vw"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             />
                     </div>
                 </Link>
@@ -23,7 +23,7 @@ export default function ProductCard({id,image,name,price}:Product) {
                     <span className="flex items-center justify-start text-background w-full text-left">{name}</span>
                     <span className="flex items-center justify-start text-background w-full text-left">{`${price} €`}</span>
                     <div className="flex items-center justify-center w-full p-5">
-                        <Button variant="outline" className="gap-2 w-full">
+                        <Button variant="default" className="gap-2 w-full">
                             <ShoppingCart /> Añadir al carrito
                         </Button>
                     </div>
