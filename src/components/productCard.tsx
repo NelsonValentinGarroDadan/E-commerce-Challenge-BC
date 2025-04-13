@@ -14,7 +14,7 @@ export default function ProductCard({id,image,name,price}:Product) {
                             alt={`img-${name}`}
                             fill
                             style={{ objectFit: "cover" }}
-                            sizes="100vw"
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                             />
                     </div>
                 </Link>
