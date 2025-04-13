@@ -83,7 +83,6 @@ export default function ProductView({productId}:{productId:string}){
                                         
                                     }
                             </section>
-
                             <Pagination actual={page} next={handleNextPage} prev={handlePrevPage} totalPages={productsRelated?.meta?.totalPages} onPageSelect={setPage}/>
                         </>
                     )
