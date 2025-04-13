@@ -7,7 +7,8 @@ import { Product, ResponseProduct } from '@/types/api';
 import { useQuery } from '@tanstack/react-query';
 import { getAllProducts } from '@/lib/fetchProducts';
 import ProductCard from '@/components/productCard';
-import Pagination from './pagination';
+import Pagination from '../../../../components/pagination';
+import LoaderSpin from '@/components/loader';
 export default function ProductsView(){
     const searchParams = useSearchParams();
     const categoryId = searchParams.get('categoryId');
@@ -23,11 +24,12 @@ export default function ProductsView(){
         setSearchCategory(categoryId)
     }
     const { data, error, isLoading } = useQuery<ResponseProduct, Error>({
-        queryKey: ['products',searchCategory, searchName, page], 
+        queryKey: ['products',searchCategory, searchName, page,searchName], 
         queryFn: () => getAllProducts({
             categoryId: searchCategory,
             limit:"6",
-            page:String(page)
+            page:String(page),
+            name:searchName
         }), 
     });
     const handleNextPage = () =>{
@@ -53,11 +55,10 @@ export default function ProductsView(){
                     onChange={handleChangeSearchName}
                 />
             </div>
-            <section className='flex flex-col items-center justify-center min-h-96'>
-                
+            <section className='flex flex-col items-center justify-start min-h-96'>
                 {
                         isLoading ? (
-                            <div>Cargando...</div>
+                             <LoaderSpin/>
                         ) : error ? (
                             <div>Error: {error.message}</div>)
                         : data && data.meta && (
@@ -78,7 +79,14 @@ export default function ProductsView(){
                           </>
                         )
                 }
-            
+                {
+                    !isLoading && !error && data?.result?.length === 0 && (
+                        <div className="text-center text-text text-lg ">
+                        No se encontraron productos.
+                        </div>
+                    )
+                }
+
             </section>
           </section>
     )

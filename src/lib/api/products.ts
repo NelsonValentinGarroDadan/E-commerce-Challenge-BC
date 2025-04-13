@@ -24,14 +24,21 @@ export function getRelatedProducts(productId: string) {
 }
 
 //trae los productos paginados y filtrados por categoria
-export function getPaginatedProducts({ category, page = 1, limit = 10 }: {
+export function getPaginatedProducts({ name,category, page = 1, limit = 10 }: {
+  name?:string
   category?: string
   page?: number
   limit?: number
 }) {
-  const filtered = category
-    ? products.filter(p => p.category === category)
-    : products
+  let filtered = products;
+
+  if (category) {
+    filtered = filtered.filter((p) => p.category === category);
+  }
+
+  if (name) {
+    filtered = filtered.filter((p) => p.name.includes(name));
+  }
 
   const start = (page - 1) * limit
   const paginated = filtered.slice(start, start + limit)

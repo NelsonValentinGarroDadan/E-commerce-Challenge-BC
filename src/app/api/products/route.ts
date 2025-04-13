@@ -6,10 +6,11 @@ export async function GET(req: NextRequest) {
   //extrae los parametros de la url
   const { searchParams } = req.nextUrl
   const category = searchParams.get('category') ?? undefined
+  const name = searchParams.get('name') || undefined
   const page = parseInt(searchParams.get('page') || '1')
   const limit = parseInt(searchParams.get('limit') || '10')
   //llama a la funcion getPaginatedProducts para obtener los productos paginados
-  const result = getPaginatedProducts({ category, page, limit })
+  const result = getPaginatedProducts({name , category, page, limit })
   //configura la respuesta
   const response = {
     statusCode: 200,
