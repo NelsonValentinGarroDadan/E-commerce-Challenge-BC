@@ -51,7 +51,7 @@ export default function Header() {
         <div
           className={`${
             menuOpen ? "block" : "hidden"
-          } absolute top-0 right-0 w-full h-screen bg-text bg-opacity-90 flex flex-col items-center justify-center gap-6 lg:hidden`}
+          } absolute top-0 right-0 w-full h-screen bg-text bg-opacity-90 flex flex-col items-center justify-center gap-6 md:hidden`}
         >
           <NavBar onLinkClick={handleLinkClick}/>
           <HeaderActions onLinkClick={handleLinkClick}/>

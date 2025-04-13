@@ -27,7 +27,7 @@ export default function NavBar({onLinkClick}:{onLinkClick:()=> void}){
                         href={link.href}
                         className={`
                             ${path === link.href ? 
-                                "text-background"
+                                "relative text-background after:content-[''] after:block after:absolute after:left-[50%] after:w-1 after:h-1 after:rounded-full after:bg-background after:mx-auto after:mt-1"
                             : 
                                 "text-background/70 hover:text-background"}
                             font-lora

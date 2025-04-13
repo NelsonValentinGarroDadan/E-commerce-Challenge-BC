@@ -38,7 +38,7 @@ npm run dev
 ---
 
 ## 🌐 Demo
- 🔗 ecommerce-app.vercel.app
+ 🔗 [ecommerce-app.vercel.app](https://e-commerce-mu-silk-58.vercel.app/)
 
 ## 🎯 Funcionalidades
 - Listado de productos en grilla
