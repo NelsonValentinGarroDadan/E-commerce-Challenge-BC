@@ -1,4 +1,5 @@
 "use client";
+import LoaderSpin from "@/components/loader";
 import ProductCard from "@/components/productCard";
 import { getPopularProducts } from "@/lib/fetchProducts";
 import { Product, ResponseProducts } from "@/types/api";
@@ -32,7 +33,7 @@ export default function Highlighted(){
             <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full py-5 gap-10">
                 {
                     isLoading ? (
-                        <div>Cargando...</div>
+                        <LoaderSpin/>
                     ) : error ? (
                         <div>Error: {error.message}</div>
                     ) : (

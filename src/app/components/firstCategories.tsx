@@ -1,6 +1,7 @@
 'use client';
 
 import InfoCard from "@/components/infoCard";
+import LoaderSpin from "@/components/loader";
 import { getAllCategories } from "@/lib/fetchCategories";
 import { Category, ResponseCategory } from "@/types/api";
 import { useQuery } from "@tanstack/react-query";
@@ -42,7 +43,7 @@ export default function FirstCategories(){
             <section className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 w-full py-6 gap-10">
                 {
                     isLoading ? (
-                        <div>Cargando...</div>
+                         <LoaderSpin/>
                     ) : error ? (
                         <div>Error: {error.message}</div>
                     ) : (
