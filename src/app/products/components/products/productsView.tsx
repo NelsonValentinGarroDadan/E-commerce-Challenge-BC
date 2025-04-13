@@ -8,7 +8,7 @@ import { useQuery } from '@tanstack/react-query';
 import { getAllProducts } from '@/lib/fetchProducts';
 import ProductCard from '@/components/productCard';
 import Pagination from '../../../../components/pagination';
-import LoaderSpin from '@/components/loader';
+import LoaderSpin from '@/components/loaderSpin';
 export default function ProductsView(){
     const searchParams = useSearchParams();
     const categoryId = searchParams.get('categoryId');

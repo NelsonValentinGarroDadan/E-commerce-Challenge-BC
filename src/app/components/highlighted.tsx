@@ -1,5 +1,5 @@
 "use client";
-import LoaderSpin from "@/components/loader";
+import LoaderSpin from "@/components/loaderSpin";
 import ProductCard from "@/components/productCard";
 import { getPopularProducts } from "@/lib/fetchProducts";
 import { Product, ResponseProducts } from "@/types/api";

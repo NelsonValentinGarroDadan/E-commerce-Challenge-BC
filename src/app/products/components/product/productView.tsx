@@ -1,7 +1,7 @@
-"use client"
+'use client'
 
 import NotFound from "@/app/not-found";
-import LoaderSpin from "@/components/loader";
+import LoaderSpin from "@/components/loaderSpin";
 import Pagination from "@/components/pagination";
 import ProductCard from "@/components/productCard";
 import { Button } from "@/components/ui/button";

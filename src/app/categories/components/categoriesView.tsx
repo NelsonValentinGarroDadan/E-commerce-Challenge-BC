@@ -1,7 +1,7 @@
 "use client"
 
 import InfoCard from "@/components/infoCard";
-import LoaderSpin from "@/components/loader";
+import LoaderSpin from "@/components/loaderSpin";
 import { getAllCategories } from "@/lib/fetchCategories";
 import { Category, ResponseCategory } from "@/types/api";
 import { useQuery } from "@tanstack/react-query";
