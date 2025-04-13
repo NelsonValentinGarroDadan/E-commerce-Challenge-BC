@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getPaginatedProducts } from '@/lib/api/products'
-import { ResponseProductSchema } from '@/schemas/api'
+import { ResponseProductsSchema } from '@/schemas/api'
 
 export async function GET(req: NextRequest) {
   //extrae los parametros de la url
@@ -24,7 +24,7 @@ export async function GET(req: NextRequest) {
     }
   }
   //valida la respuesta con el schema de respuesta
-  const parsed = ResponseProductSchema.safeParse(response)
+  const parsed = ResponseProductsSchema.safeParse(response)
   if (!parsed.success) {
     return NextResponse.json({
       statusCode: 500,

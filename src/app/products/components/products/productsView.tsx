@@ -3,7 +3,7 @@ import { useSearchParams } from 'next/navigation';
 import SearchBar from './searchBar';
 import { useState } from 'react';
 import SelectCategory from './selectCategory';
-import { Product, ResponseProduct } from '@/types/api';
+import { Product, ResponseProducts } from '@/types/api';
 import { useQuery } from '@tanstack/react-query';
 import { getAllProducts } from '@/lib/fetchProducts';
 import ProductCard from '@/components/productCard';
@@ -23,7 +23,7 @@ export default function ProductsView(){
     const handleChangeSearchCategory = (categoryId:string) =>{
         setSearchCategory(categoryId)
     }
-    const { data, error, isLoading } = useQuery<ResponseProduct, Error>({
+    const { data, error, isLoading } = useQuery<ResponseProducts, Error>({
         queryKey: ['products',searchCategory, searchName, page,searchName], 
         queryFn: () => getAllProducts({
             categoryId: searchCategory,

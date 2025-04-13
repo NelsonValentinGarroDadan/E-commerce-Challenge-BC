@@ -1,13 +1,13 @@
 "use client";
 import ProductCard from "@/components/productCard";
 import { getPopularProducts } from "@/lib/fetchProducts";
-import { Product, ResponseProduct } from "@/types/api";
+import { Product, ResponseProducts } from "@/types/api";
 import { useQuery } from "@tanstack/react-query";
 import { MoveRight } from "lucide-react";
 import Link from "next/link";
 
 export default function Highlighted(){
-    const {data, isLoading, error} = useQuery<ResponseProduct,Error>({
+    const {data, isLoading, error} = useQuery<ResponseProducts,Error>({
         queryKey: ['products'], 
         queryFn: getPopularProducts
     })

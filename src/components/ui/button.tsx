@@ -6,7 +6,7 @@ const button = tv({
   base: 'flex items-center justify-center rounded-md transition-colors duration-300 font-roboto', 
   variants: {
     variant: {
-      default: 'bg-primary text-background hover:bg-primary/80',   
+      default: 'hover:bg-primary text-background bg-primary/80',   
       outline: 'border-2 border-secundary text-primary bg-background hover:bg-white/20',  
       ghost: 'text-text hover:bg-gray-100',  
     },
