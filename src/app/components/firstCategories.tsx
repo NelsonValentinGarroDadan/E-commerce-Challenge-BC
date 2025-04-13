@@ -50,6 +50,7 @@ export default function FirstCategories(){
                             <InfoCard key={category.id + category.name} 
                                 icon={categoryIcons[category.icon as keyof typeof categoryIcons]}
                                 title={category.name}
+                                href={`/products/?categoryId=${category.id}`}
                             />
                         ))
                     )

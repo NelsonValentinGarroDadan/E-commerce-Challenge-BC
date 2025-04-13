@@ -7,7 +7,7 @@ const button = tv({
   variants: {
     variant: {
       default: 'bg-primary text-background hover:bg-primary/80',   
-      outline: 'border-2 border-secundary text-primary hover:bg-secundary/80',  
+      outline: 'border-2 border-secundary text-primary bg-background hover:bg-white/20',  
       ghost: 'text-text hover:bg-gray-100',  
     },
     size: {

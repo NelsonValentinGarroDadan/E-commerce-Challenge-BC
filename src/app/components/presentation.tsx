@@ -21,9 +21,11 @@ export default function Presentation() {
             <div className="relative w-82 h-82 lg:w-full lg:h-120">
                 <Image
                     src="/hero.webp"
-                    layout="fill"
-                    objectFit="cover"
                     alt="hero-img"
+                    loading="lazy"
+                    fill
+                    style={{ objectFit: "cover" }}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
             </div>
         </section>

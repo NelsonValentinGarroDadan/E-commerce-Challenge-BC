@@ -6,16 +6,18 @@ import { ShoppingCart } from "lucide-react";
 
 export default function ProductCard({id,image,name,price}:Product) {
     return (
-        <Link href={`/products/${id}`}>
-            <div className="w-full h-130 bg-text flex flex-col">
-                <div className="w-full h-90 relative bg-text flex justify-start">
-                    <Image 
-                        src={image}
-                        alt={`img-${name}`}
-                        layout="fill" 
-                        objectFit="contain" 
-                    />
-                </div>
+        <div className="w-full bg-text shadow-text shadow-md flex flex-col justify-start">
+                <Link href={`/products/?productId=${id}`}>
+                    <div className="w-full h-60 relative bg-text flex justify-start items-center">
+                        <Image 
+                            src={image}
+                            alt={`img-${name}`}
+                            fill
+                            style={{ objectFit: "cover" }}
+                            sizes="100vw"
+                            />
+                    </div>
+                </Link>
 
                 <div className="flex flex-col items-center justify-center p-5 h-40">
                     <span className="flex items-center justify-start text-background w-full text-left">{name}</span>
@@ -27,6 +29,5 @@ export default function ProductCard({id,image,name,price}:Product) {
                     </div>
                 </div>
             </div>
-        </Link>
     );
 }
