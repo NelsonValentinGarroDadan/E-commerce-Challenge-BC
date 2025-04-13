@@ -8,11 +8,11 @@ export const metadata = {
 }
 export default function Home(){
     return(
-        <main className="min-h-screen flex flex-col items-center justify-start">
+        <>
             <Presentation />
             <Highlighted />
             <FirstCategories />
             <ChooseUs />
-        </main>
+        </>
     );
 }

@@ -4,7 +4,7 @@
     "name": "Logitech MX Keys",
     "price": 129.99,
     "description": "Teclado inalámbrico retroiluminado con diseño ergonómico.",
-    "category": "keyboard",
+    "category": "1",
     "image": "https://m.media-amazon.com/images/I/71zPs9UgSbL._AC_SL1500_.jpg"
   },
   {
@@ -12,7 +12,7 @@
     "name": "Redragon Kumara K552",
     "price": 59.99,
     "description": "Teclado mecánico compacto con switches rojos.",
-    "category": "keyboard",
+    "category": "1",
     "image": "https://http2.mlstatic.com/D_NQ_NP_624382-MLA27969303874_082018-O.webp"
   },
   {
@@ -20,7 +20,7 @@
     "name": "Logitech G502 HERO",
     "price": 49.99,
     "description": "Ratón para gaming de alta precisión con peso personalizable.",
-    "category": "mouse",
+    "category": "2",
     "image": "https://m.media-amazon.com/images/I/61mpMH5TzkL._AC_SL1500_.jpg"
   },
   {
@@ -28,7 +28,7 @@
     "name": "Razer DeathAdder V2",
     "price": 69.99,
     "description": "Ratón ergonómico con sensor óptico de 20K DPI.",
-    "category": "mouse",
+    "category": "2",
     "image": "https://m.media-amazon.com/images/I/41iLtLRTsZL._AC_UF894,1000_QL80_.jpg"
   },
   {
@@ -36,7 +36,7 @@
     "name": "Sony WH-1000XM4",
     "price": 299.99,
     "description": "Auriculares inalámbricos con cancelación de ruido líder en la industria.",
-    "category": "headphones",
+    "category": "3",
     "image": "https://m.media-amazon.com/images/I/71o8Q5XJS5L._AC_SL1500_.jpg"
   },
   {
@@ -44,7 +44,7 @@
     "name": "HyperX Cloud II",
     "price": 89.99,
     "description": "Auriculares para gaming con sonido envolvente 7.1.",
-    "category": "headphones",
+    "category": "3",
     "image": "https://m.media-amazon.com/images/I/61Qe0euJJZL._AC_SL1400_.jpg"
   },
   {
@@ -52,7 +52,7 @@
     "name": "Samsung Monitor Curvo 27''",
     "price": 179.99,
     "description": "Monitor Full HD con pantalla curva y tecnología FreeSync.",
-    "category": "monitor",
+    "category": "4",
     "image": "https://m.media-amazon.com/images/I/71sX5llG6KL._AC_SL1500_.jpg"
   },
   {
@@ -60,7 +60,7 @@
     "name": "LG UltraGear 24''",
     "price": 149.99,
     "description": "Monitor para gaming con 144Hz y 1ms de respuesta.",
-    "category": "monitor",
+    "category": "4",
     "image": "https://m.media-amazon.com/images/I/81kTJtJtYOL._AC_SL1500_.jpg"
   },
   {
@@ -68,7 +68,7 @@
     "name": "Lámpara de escritorio LED",
     "price": 39.99,
     "description": "Lámpara táctil con brazo ajustable y múltiples temperaturas de color.",
-    "category": "lamp",
+    "category": "5",
     "image": "https://m.media-amazon.com/images/I/61FjTjVKHZL._AC_SL1500_.jpg"
   },
   {
@@ -76,7 +76,7 @@
     "name": "Set de accesorios de oficina",
     "price": 24.99,
     "description": "Kit completo de accesorios para escritorio con organizadores, clips y más.",
-    "category": "package",
+    "category": "5",
     "image": "https://m.media-amazon.com/images/I/81UYX+W0n1L._AC_SL1500_.jpg"
   }
 ]
