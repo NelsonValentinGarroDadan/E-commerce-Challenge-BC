@@ -1,3 +1,8 @@
-import { ProductSchema } from '@/schemas/api';
-import z from 'zod';
-export type Product = z.infer<typeof ProductSchema>;
+export type Product = {
+    id: string,
+    name: string,
+    price: number,
+    description: string,
+    category: string,
+    image: string
+};

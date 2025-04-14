@@ -1,7 +1,7 @@
 'use client';
 import { useSearchParams } from 'next/navigation';
 import SearchBar from './searchBar';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import SelectCategory from './selectCategory';
 import { Product, ResponseProducts } from '@/types/api';
 import { useQuery } from '@tanstack/react-query';
@@ -23,7 +23,7 @@ export default function ProductsView(){
     const handleChangeSearchCategory = (categoryId:string) =>{
         setSearchCategory(categoryId)
     }
-    const { data, error, isLoading } = useQuery<ResponseProducts, Error>({
+    const { data, error, isLoading} = useQuery<ResponseProducts, Error>({
         queryKey: ['products',searchCategory, searchName, page,searchName], 
         queryFn: () => getAllProducts({
             categoryId: searchCategory,
@@ -32,6 +32,9 @@ export default function ProductsView(){
             name:searchName
         }), 
     });
+    useEffect(()=>{
+        setPage(1);
+    },[searchName, searchCategory])
     const handleNextPage = () =>{
         if(!data?.meta) return;
         if(Number(data?.meta?.totalPages) >= page + 1) setPage( page+1)

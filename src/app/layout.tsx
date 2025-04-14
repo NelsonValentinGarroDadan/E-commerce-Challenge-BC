@@ -2,6 +2,7 @@ import Header from '@/app/components/header/header';
 import './globals.css'
 import { Providers } from './providers';
 import Footer from './components/footer';
+import ShoppingCart from '@/components/shoppingCart/shoppingCart';
 
 export const metadata = {
   title: 'Tu título',
@@ -18,10 +19,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" suppressHydrationWarning>
-      <body>
+      <body className='relative'>
         <Providers>
           <Header />
           <main className="container mx-auto min-h-screen flex-col">{children}</main>
+          <ShoppingCart />
           <Footer />
         </Providers>
       </body>
