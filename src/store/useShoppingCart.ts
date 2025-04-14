@@ -27,8 +27,13 @@ const cartStoreCreator: StateCreator<ShoppingCart, [], [], ShoppingCart> = (set,
         ),
       });
     },
+    cleanCart: () => set({items: []}),
     toggleCart: () => set({ isOpen: !get().isOpen }),
     closeCart: () => set({ isOpen: false }),
+    buy: ()=> { 
+        set({items:[]});
+        alert('Compra realizada con exito')
+    },
   });
   
   export const useCartStore = create<ShoppingCart>()(

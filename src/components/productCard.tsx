@@ -3,8 +3,20 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { ShoppingCart } from "lucide-react";
+import { useCartStore } from "@/store/useShoppingCart";
 
 export default function ProductCard({id,image,name,price}:Product) {
+    const {addItem,isOpen, toggleCart} = useCartStore((state)=>state);
+    const handleAddItemToCart = () =>{
+        addItem({
+            id,
+            image,
+            name,
+            price,
+            quantity:1,
+        });
+        if(!isOpen) toggleCart();
+    }
     return (
         <div className="w-full bg-text shadow-text shadow-md flex flex-col justify-start">
                 <Link href={`/products/?productId=${id}`}>
@@ -23,7 +35,7 @@ export default function ProductCard({id,image,name,price}:Product) {
                     <span className="flex items-center justify-start text-background w-full text-left">{name}</span>
                     <span className="flex items-center justify-start text-background w-full text-left">{`${price} €`}</span>
                     <div className="flex items-center justify-center w-full p-5">
-                        <Button variant="default" className="gap-2 w-full">
+                        <Button onClick={handleAddItemToCart } variant="default" className="gap-2 w-full">
                             <ShoppingCart /> Añadir al carrito
                         </Button>
                     </div>

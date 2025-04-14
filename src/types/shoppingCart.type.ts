@@ -14,5 +14,7 @@ export type ShoppingCart = {
     removeItem: (id: string) => void;
     toggleCart: () => void;
     closeCart: () => void;
+    cleanCart:() => void;
+    buy: () => void;
     updateQuantity: (id: string, quantity: number) => void;
  };
