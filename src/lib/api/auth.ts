@@ -1,22 +1,14 @@
 import { User } from "@/types/api/user.type";
 import { Login, Register } from "@/types/auth.type"
-import fs from 'fs';
-import path from 'path';
 import bcrypt from 'bcryptjs';
 import crypto from 'crypto';
 import jwt from 'jsonwebtoken';
+import { readUsers, writeUsers } from "./user";
 
 const SECRET = process.env.JWT_SECRET || "my-secret";
-const usersPath = path.join(process.cwd(), 'src/data/users.json');
 
-function readUsers() {
-  const file = fs.readFileSync(usersPath, 'utf-8');
-  return JSON.parse(file);
-}
 
-function writeUsers(users: User[]) {
-  fs.writeFileSync(usersPath, JSON.stringify(users, null, 2), 'utf-8');
-}
+
 
 export async function registerUser(data: Register) {
     if (data.password !== data.confirm) {

@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LoginForm from "./loginForm";
 import RegisterForm from "./registerForm";
 import { FormProvider, useForm } from "react-hook-form";
@@ -17,7 +17,7 @@ import { toast } from 'sonner';
 import { X } from "lucide-react";
 import { useUserStore } from "@/store/useUserStore";
 export default function AuhtView(){
-    const {login} = useUserStore((state) => state)
+    const {login,isLogin:isLog} = useUserStore((state) => state)
     const router = useRouter();
     const { mutate, isPending } = useMutation<ResponseAuthSchema,AxiosError<{ errors: { title: string; description: string }[]}>,Auth>({
         mutationFn: (data:Auth) => postAuth(data),
@@ -28,14 +28,14 @@ export default function AuhtView(){
                 duration:4000,
                 richColors: true,
                 action:{
-                    label: <X className="h-3 w-3 text-tex"/>,
+                    label: <X className="h-3 w-3 text-text"/>,
                     onClick: () => toast.dismiss()
                 },
 
             })
             if (data.statusCode === 200) {
                 setTimeout(() => {
-                    router.push("/"); 
+                    router.back(); 
                 }, 500);
             }
         },
@@ -50,6 +50,10 @@ export default function AuhtView(){
             
         }
       });
+    useEffect(()=>{
+        if(isLog === true)router.push('/profile');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    },[isLog]);
     const [isLogin, setIsLogin] = useState(true);
     const methods = useForm< Auth >({
         mode:"onChange",
@@ -58,6 +62,7 @@ export default function AuhtView(){
             type:"login"
         },
     });
+    if (isLog === null) return null;
     const { 
         handleSubmit,
         formState:{ isValid }, 

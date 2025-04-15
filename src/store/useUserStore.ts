@@ -12,7 +12,7 @@ export const userStoreCreator: StateCreator<UserStore, [], [], UserStore> = ((se
         const decoded: { id: string; } = jwtDecode(token);
         set({ id:decoded.id, token, isLogin:true })
     },
-    logout: () => set({ id: null, token: null, isLogin:true}),
+    logout: () => set({ id: null, token: null, isLogin:false}),
 }));
 export const useUserStore = create<UserStore>()(
     persist(userStoreCreator, {
