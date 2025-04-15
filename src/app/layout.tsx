@@ -3,7 +3,7 @@ import './globals.css'
 import { Providers } from './providers';
 import Footer from './components/footer';
 import ShoppingCart from '@/components/shoppingCart/shoppingCart';
-
+import { Toaster } from 'sonner';
 export const metadata = {
   title: 'Tu título',
   description: 'Tu descripción',
@@ -24,6 +24,7 @@ export default function RootLayout({
           <Header />
           <main className="container mx-auto min-h-screen flex-col">{children}</main>
           <ShoppingCart />
+          <Toaster  />
           <Footer />
         </Providers>
       </body>
