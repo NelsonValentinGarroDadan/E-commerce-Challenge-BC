@@ -24,7 +24,7 @@ export default function Highlighted(){
                     </p>
                 </div>
                 <div className="flex items-center justify-end w-full">
-                    <Link href="/products" className="flex items-center justify-centertext-text gap-3 hover:border-b-1 hover:border-b-text">
+                    <Link href="/products" className="flex items-center justify-centertext-text gap-3 hover:border-b-1 hover:border-b-text !ease-in-out !duration-75">
                         Ver todos
                         <MoveRight />
                     </Link>

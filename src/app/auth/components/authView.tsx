@@ -25,7 +25,7 @@ export default function AuhtView(){
                 richColors: true,
                 action:{
                     label: <X className="h-3 w-3 text-tex"/>,
-                    onClick: ()=>{}
+                    onClick: () => toast.dismiss()
                 },
 
             })
