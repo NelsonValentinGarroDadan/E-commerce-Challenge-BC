@@ -1,5 +1,5 @@
 "use client"
-import { useCartStore } from "@/store/useShoppingCart";
+import { useCartStore } from "@/store/useCartStore";
 import type { ShoppingItem } from "@/types/shoppingCart.type";
 import { Minus, Plus, Trash2 } from "lucide-react";
 import Image from "next/image";

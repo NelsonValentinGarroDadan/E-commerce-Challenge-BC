@@ -15,11 +15,15 @@ import { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
 import { toast } from 'sonner';
 import { X } from "lucide-react";
+import { useUserStore } from "@/store/useUserStore";
 export default function AuhtView(){
+    const {login} = useUserStore((state) => state)
     const router = useRouter();
     const { mutate, isPending } = useMutation<ResponseAuthSchema,AxiosError<{ errors: { title: string; description: string }[]}>,Auth>({
         mutationFn: (data:Auth) => postAuth(data),
         onSuccess: (data) => {
+            console.log(data.result)
+            if(data.result?.token) login(data.result?.token)
             toast.success(`${data.result?.message}`,{
                 duration:4000,
                 richColors: true,

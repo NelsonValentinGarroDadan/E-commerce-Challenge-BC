@@ -1,6 +1,6 @@
 "use client"
 import { Button } from "@/components/ui/button";
-import { useCartStore } from "@/store/useShoppingCart";
+import { useCartStore } from "@/store/useCartStore";
 
 export default function ButtonsAction () {
     const  { closeCart , cleanCart , items,buy} = useCartStore((state)=>state);

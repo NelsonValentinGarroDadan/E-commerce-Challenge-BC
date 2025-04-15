@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { ShoppingCart } from "lucide-react";
-import { useCartStore } from "@/store/useShoppingCart";
+import { useCartStore } from "@/store/useCartStore";
 
 export default function ProductCard({id,image,name,price}:Product) {
     const {addItem,isOpen, toggleCart} = useCartStore((state)=>state);

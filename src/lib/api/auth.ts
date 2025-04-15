@@ -3,8 +3,10 @@ import { Login, Register } from "@/types/auth.type"
 import fs from 'fs';
 import path from 'path';
 import bcrypt from 'bcryptjs';
+import crypto from 'crypto';
+import jwt from 'jsonwebtoken';
 
-
+const SECRET = process.env.JWT_SECRET || "my-secret";
 const usersPath = path.join(process.cwd(), 'src/data/users.json');
 
 function readUsers() {
@@ -38,7 +40,8 @@ export async function registerUser(data: Register) {
 
     const hashedPassword = await bcrypt.hash(data.password, 10);
 
-    const newUser = {
+    const newUser:User = {
+        id: crypto.randomUUID(),
         name: data.name,
         email: data.email,
         password: hashedPassword
@@ -73,9 +76,14 @@ export async function loginUser(data:Login) {
         errors: [{ title: 'BadRequest', description: 'Credenciales incorrectas' }]
       };
     }
+    const token = jwt.sign(
+      { id: user.id},
+      SECRET,
+      { expiresIn: "1h" }
+    );
     return {
       statusCode: 200,
-      result: { message: 'Login exitoso' },
+      result: { message: 'Login exitoso', token },
       errors: []
     }
   }
