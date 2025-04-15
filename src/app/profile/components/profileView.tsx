@@ -48,7 +48,6 @@ export default function ProfileView(){
     if (isLogin === null) return null;
     if (!isLogin) return null;
     if(!token) return null;
-    
     return(
         <section className="section-container flex-col mt-30 gap-4">
             <h1 className="font-roboto text-2xl lg:text-4xl font-bold text-text w-full">

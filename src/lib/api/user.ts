@@ -1,6 +1,7 @@
 import { User } from '@/types/api/user.type';
 import fs from 'fs';
 import path from 'path';
+import { findProductById } from './products';
 
 const usersPath = path.join(process.cwd(), 'src/data/users.json');
 
@@ -49,4 +50,43 @@ export async function getUserFavorites({ name,category, userId,page = 1, limit =
     page,
     totalPages: Math.ceil(filtered.length / limit)
   }
+}
+
+export async function saveFavoriteProduct({userId, productId}:{userId:string; productId:string}){
+  const users = readUsers();
+
+  // Buscar al usuario con todo el contenido
+  const userIndex = users.findIndex((u: User) => u.id === userId);
+  if (userIndex === -1) {
+    throw new Error('Usuario no encontrado');
+  }
+
+  const user:User = users[userIndex];
+
+  // Verificar si el producto ya está en favoritos
+  const alreadyFavorite = user.favorites?.some(p => p.id === productId);
+  if (alreadyFavorite) {
+    throw new Error('El producto ya está en favoritos');
+  }
+
+  // Buscar el producto completo
+  const product = await findProductById(productId);
+  if (!product) {
+    throw new Error('Producto no encontrado');
+  }
+
+  // Asegurarse que el campo favorites existe
+  if (!user.favorites) {
+    user.favorites = [];
+  }
+
+  // Agregar el producto a favoritos
+  user.favorites.push(product);
+
+  // Actualizar el usuario en la lista
+  users[userIndex] = user;
+
+  // Guardar el archivo
+  writeUsers(users);
+
 }

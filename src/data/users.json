@@ -4,6 +4,23 @@
     "name": "colo",
     "email": "colo@gmail.com",
     "password": "$2b$10$mlcLkObj3d5g64Tk9.2kg.V5E/2Q1PM5ehjLZKpfSXYNHmSPGM.pG",
-    "favorites": []
+    "favorites": [
+      {
+        "id": "3",
+        "name": "Logitech G502 HERO",
+        "price": 49.99,
+        "description": "Ratón para gaming de alta precisión con peso personalizable.",
+        "category": "2",
+        "image": "https://m.media-amazon.com/images/I/61mpMH5TzkL._AC_SL1500_.jpg"
+      },
+      {
+        "id": "2",
+        "name": "Redragon Kumara K552",
+        "price": 59.99,
+        "description": "Teclado mecánico compacto con switches rojos.",
+        "category": "1",
+        "image": "https://http2.mlstatic.com/D_NQ_NP_624382-MLA27969303874_082018-O.webp"
+      }
+    ]
   }
 ]

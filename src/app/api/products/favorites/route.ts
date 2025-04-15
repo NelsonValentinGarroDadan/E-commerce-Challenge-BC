@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { jwtDecode } from 'jwt-decode'
 import { ResponseProductsSchema } from '@/schemas/api'
-import { getUserFavorites } from '@/lib/api/user'
+import { getUserFavorites, saveFavoriteProduct } from '@/lib/api/user'
+import { ReponseSchema } from '@/schemas/auth.schema'
 
 export async function GET(req: NextRequest) {
   const authHeader = req.headers.get('authorization')
@@ -62,4 +63,61 @@ export async function GET(req: NextRequest) {
   }
 
   return NextResponse.json(parsed.data)
+}
+export async function POST(req: NextRequest) {
+  // Validar token
+  const authHeader = req.headers.get('authorization')
+  const token = authHeader?.replace('Bearer ', '')
+  console.log(token);
+  if (!token) {
+    return NextResponse.json({
+      statusCode: 401,
+      result: null,
+      errors: [{ name: 'Unauthorized', description: 'Token no proporcionado' }]
+    }, { status: 401 })
+  }
+
+  let decoded: { id: string }
+  try {
+    decoded = jwtDecode(token)
+  } catch (error) {
+    console.log(error)
+    return NextResponse.json({
+      statusCode: 401,
+      result: null,
+      errors: [{ name: 'InvalidToken', description: 'Token inválido' }]
+    }, { status: 401 })
+  }
+
+  const userId = decoded.id;
+  const { searchParams } = req.nextUrl;
+  const productId = searchParams.get('productId');
+  // Guardar favorito
+  try {
+    await saveFavoriteProduct({userId, productId:productId ?? ""})
+
+    const response = {
+      statusCode: 200,
+      result: { message: 'Producto agregado a favoritos correctamente' },
+      errors: []
+    }
+
+    const parsed = ReponseSchema.safeParse(response)
+    if (!parsed.success) {
+      return NextResponse.json({
+        statusCode: 500,
+        result: null,
+        errors: [{ name: 'ResponseValidation', description: 'Formato de respuesta inválido' }]
+      }, { status: 500 })
+    }
+
+    return NextResponse.json(parsed.data)
+  } catch (error) {
+    console.error(error)
+    return NextResponse.json({
+      statusCode: 500,
+      result: null,
+      errors: [{ name: 'ServerError', description: 'Error al guardar el favorito' }]
+    }, { status: 500 })
+  }
 }
