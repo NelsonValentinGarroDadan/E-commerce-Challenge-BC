@@ -36,7 +36,8 @@ export async function registerUser(data: Register) {
         id: crypto.randomUUID(),
         name: data.name,
         email: data.email,
-        password: hashedPassword
+        password: hashedPassword,
+        favorites: [],
     };
 
     users.push(newUser);

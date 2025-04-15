@@ -20,3 +20,33 @@ export async function getUserById(userId:string) {
     if(false) console.log(password,id)
     return rest;
 }
+
+export async function getUserFavorites({ name,category, userId,page = 1, limit = 10 }: {
+  userId:string
+  name?:string
+  category?: string
+  page?: number
+  limit?: number
+}){
+  const user = await getUserById(userId);
+  if(!user) return null;
+  let filtered = user.favorites;
+
+  if (category) {
+    filtered = filtered.filter((p) => p.category === category);
+  }
+
+  if (name) {
+    filtered = filtered.filter((p) => p.name.includes(name));
+  }
+
+  const start = (page - 1) * limit
+  const paginated = filtered.slice(start, start + limit)
+
+  return {
+    products: paginated,
+    total: filtered.length,
+    page,
+    totalPages: Math.ceil(filtered.length / limit)
+  }
+}

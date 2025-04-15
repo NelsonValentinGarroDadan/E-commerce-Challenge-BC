@@ -25,3 +25,22 @@ export const getRelatedsProducts = async ({productId,limit,page}:{productId:stri
     const response = await axios.get(`/api/products/related?id=${productId}&limit=${limit}&page=${page}`)
     return response.data;
 }
+
+export const getProductsFavorites = async ({token,name,categoryId,limit,page}:
+    {
+        token:string
+        categoryId?:string,
+        limit?:string,
+        page?:string, 
+        name?:string
+
+    }) => {
+    const response = await axios.get(`/api/products/favorites?category=${categoryId}&limit=${limit}&page=${page}&name=${name}`,
+        {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }
+    );
+    return response.data;
+}
