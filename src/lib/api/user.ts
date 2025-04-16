@@ -36,11 +36,9 @@ export async function getUserFavorites({ name,category, userId,page = 1, limit =
   if (category && category !== 'undefined' ) {
     filtered = filtered.filter((p) => p.category === category);
   }
-  console.log(category)
   if (name && name !== 'undefined' ) {
     filtered = filtered.filter((p) => p.name.includes(name ?? ""));
   }
-  console.log(name)
   const start = (page - 1) * limit
   const paginated = filtered.slice(start, start + limit)
 

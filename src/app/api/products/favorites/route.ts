@@ -39,7 +39,6 @@ export async function GET(req: NextRequest) {
   const limit = parseInt(searchParams.get('limit') || '10')
   // obtiene los favoritos
   const result = await getUserFavorites({category, name, userId , page, limit })
-  console.log(result)
   // estructura la respuesta
   const response = {
     statusCode: 200,
@@ -69,7 +68,6 @@ export async function POST(req: NextRequest) {
   // Validar token
   const authHeader = req.headers.get('authorization')
   const token = authHeader?.replace('Bearer ', '')
-  console.log(token);
   if (!token) {
     return NextResponse.json({
       statusCode: 401,
