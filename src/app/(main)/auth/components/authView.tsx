@@ -78,8 +78,13 @@ export default function AuhtView(){
     }
     return(
         <section className="section-container mt-20">
-            <section className="flex flex-col items-start justify-center border-1 border-text p-5 gap-3 font-roboto">
+            <section className="flex flex-col items-start justify-center border-1 border-text p-5 gap-3 font-roboto min-w-1/3">
                 <h1 className="text-text text-3xl">Cuenta</h1>
+                <p className="text-text/70 text-lg">Demo: </p>
+                <p className="text-text/70 text-lg pl-4">    
+                    email: colo@gmail.com <br/>
+                    password: 123456
+                </p>
                 <p className="text-text/80 text-sm w-full">Inicia sesión o regístrate para continuar</p>
                 <div className="flex items-center justify-center w-full bg-text/50">
                     <button 
