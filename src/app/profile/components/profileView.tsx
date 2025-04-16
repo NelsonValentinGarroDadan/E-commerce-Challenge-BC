@@ -40,7 +40,7 @@ export default function ProfileView(){
         queryKey: ['favorite'], 
         queryFn: () => getProductsFavorites({
             token: token ?? "",
-            limit:"6",
+            limit:"2",
             page:"1",
         }), 
     });
@@ -84,17 +84,25 @@ export default function ProfileView(){
                                     <LoaderSpin/>
                             ) : errorFavorites ? ( <div>Error: {errorFavorites.message}</div> )
                             : favorites?.result && favorites?.result.length > 0 ?
-                                <section className="grid grid-cols-1 lg:grid-cols-2 w-full py-5 gap-2">
-                                    {
-                                        favorites?.result?.map((product:Product)=>(
-                                            <ProductCard 
-                                                key={product.id}
-                                                {...product}
-                                                showFavoriteButton={false}
-                                            />
-                                        ))
-                                    }
-                                </section>
+                                <>
+                                    
+                                    <section className="grid grid-cols-1 lg:grid-cols-2 w-full py-5 gap-2">
+                                        {
+                                            favorites?.result?.map((product:Product)=>(
+                                                <ProductCard 
+                                                    key={product.id}
+                                                    {...product}
+                                                    showFavoriteButton={false}
+                                                />
+                                            ))
+                                        }
+                                    </section>
+                                    <div className="py-4">
+                                        <Link href="/favorities" className="flex items-center justify-centertext-text gap-3 hover:border-b-1 hover:border-b-text !ease-in-out !duration-75">
+                                            Ver todos los productos favoritos
+                                        </Link>
+                                    </div>
+                                </>
                                 :
                                 (
                                     <div className="flex items-start justify-center gap-2 mt-3 h-10">
