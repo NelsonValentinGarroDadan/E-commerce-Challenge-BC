@@ -1,25 +1,20 @@
 "use client"
-import { useCartStore } from "@/store/useShoppingCart";
+import { useCartStore } from "@/store/useCartStore";
 import type { ShoppingItem } from "@/types/shoppingCart.type";
 import { Minus, Plus, Trash2 } from "lucide-react";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 
-export default function ShoppingItem ({id,name,price,image,quantity:q}:ShoppingItem) {
+export default function ShoppingItem ({id,name,price,image,quantity}:ShoppingItem) {
     const  { removeItem, updateQuantity } = useCartStore((state)=>state);
-    const [quantity, setQuantity] = useState(q);
     const handleRemove = () =>{
         removeItem(id);
     }
     const handleSusQuantity = () => {
-        if(quantity - 1 > 0) setQuantity(quantity-1);
+        if(quantity - 1 > 0) updateQuantity(id,quantity-1);
     }
     const handlePlusQuantity = () => {
-        if(quantity+1 < 11)setQuantity(quantity+1);
+        if(quantity+1 < 11)updateQuantity(id,quantity+1);
     }
-    useEffect(()=>{
-        updateQuantity(id,quantity)
-    },[id, quantity, updateQuantity])
     return (
         <div className="flex items-center justify-center text-background w-full text-sm gap-2">
             <div className="w-[100px] h-[100px] relative overflow-hidden rounded-md shrink-0">

@@ -1,20 +1,14 @@
 import { User } from "@/types/api/user.type";
 import { Login, Register } from "@/types/auth.type"
-import fs from 'fs';
-import path from 'path';
 import bcrypt from 'bcryptjs';
+import crypto from 'crypto';
+import jwt from 'jsonwebtoken';
+import { readUsers, writeUsers } from "./user";
+
+const SECRET = process.env.JWT_SECRET || "my-secret";
 
 
-const usersPath = path.join(process.cwd(), 'src/data/users.json');
 
-function readUsers() {
-  const file = fs.readFileSync(usersPath, 'utf-8');
-  return JSON.parse(file);
-}
-
-function writeUsers(users: User[]) {
-  fs.writeFileSync(usersPath, JSON.stringify(users, null, 2), 'utf-8');
-}
 
 export async function registerUser(data: Register) {
     if (data.password !== data.confirm) {
@@ -38,10 +32,12 @@ export async function registerUser(data: Register) {
 
     const hashedPassword = await bcrypt.hash(data.password, 10);
 
-    const newUser = {
+    const newUser:User = {
+        id: crypto.randomUUID(),
         name: data.name,
         email: data.email,
-        password: hashedPassword
+        password: hashedPassword,
+        favorites: [],
     };
 
     users.push(newUser);
@@ -73,9 +69,14 @@ export async function loginUser(data:Login) {
         errors: [{ title: 'BadRequest', description: 'Credenciales incorrectas' }]
       };
     }
+    const token = jwt.sign(
+      { id: user.id},
+      SECRET,
+      { expiresIn: "1h" }
+    );
     return {
       statusCode: 200,
-      result: { message: 'Login exitoso' },
+      result: { message: 'Login exitoso', token },
       errors: []
     }
   }

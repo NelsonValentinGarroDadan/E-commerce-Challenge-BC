@@ -1,7 +1,7 @@
 "use client"
 
 import SwichTheme from "@/components/switchTheme";
-import { useCartStore } from "@/store/useShoppingCart";
+import { useCartStore } from "@/store/useCartStore";
 import { Heart, ShoppingCart, User } from "lucide-react";
 import Link from "next/link";
 

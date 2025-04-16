@@ -1,5 +1,5 @@
 "use client"
-import { useCartStore } from "@/store/useShoppingCart";
+import { useCartStore } from "@/store/useCartStore";
 import ShoppingItem from "./components/shoppingItem"
 import { ShoppingBag, X } from "lucide-react";
 import ButtonsAction from "./components/buttonsAction";

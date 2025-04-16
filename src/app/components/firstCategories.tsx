@@ -34,7 +34,7 @@ export default function FirstCategories(){
                     </p>
                 </div>
                 <div className="flex items-center justify-end w-full">
-                    <Link href="/categories" className="flex items-center justify-centertext-text gap-3">
+                    <Link href="/categories" className="flex items-center justify-centertext-text gap-3 hover:border-b-1 hover:border-b-text !ease-in-out !duration-75">
                         Ver todas
                         <MoveRight />
                     </Link>

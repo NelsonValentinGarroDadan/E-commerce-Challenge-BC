@@ -21,4 +21,8 @@ export const RegisterSchema = z.object({
 
 export const authSchema = z.union([LoginSchema, RegisterSchema]);
 
-export const ReponseSchema = BaseResponseSchema(z.object({message:z.string()}))
+export const ReponseSchema = BaseResponseSchema(z.object(
+  {
+    message:z.string(),
+    token: z.string().optional(),
+  }))

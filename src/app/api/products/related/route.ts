@@ -38,7 +38,6 @@ export async function GET(req: NextRequest) {
   }
   //valida la respuesta con el schema de respuesta
   const parsed = ResponseProductsSchema.safeParse(response)
-  console.log(parsed.success);
   if (!parsed.success) {
     return NextResponse.json({
       statusCode: 500,
