@@ -33,12 +33,13 @@ export async function GET(req: NextRequest) {
 
   // extrae los parámetros de paginación
   const { searchParams } = req.nextUrl
+  const category = searchParams.get('category') || undefined
+  const name = searchParams.get('name') || undefined
   const page = parseInt(searchParams.get('page') || '1')
   const limit = parseInt(searchParams.get('limit') || '10')
-  const category = searchParams.get('category') ?? undefined
-  const name = searchParams.get('name') || undefined
   // obtiene los favoritos
   const result = await getUserFavorites({category, name, userId , page, limit })
+  console.log(result)
   // estructura la respuesta
   const response = {
     statusCode: 200,
@@ -94,8 +95,14 @@ export async function POST(req: NextRequest) {
   const productId = searchParams.get('productId');
   // Guardar favorito
   try {
-    await saveFavoriteProduct({userId, productId:productId ?? ""})
-
+    const result = await saveFavoriteProduct({userId, productId:productId ?? ""})
+    if(result){
+      return NextResponse.json({
+        statusCode: 400,
+        result: null,
+        errors: [{ name: 'BadRequest', description: result }]
+      }, { status: 400 })
+    }
     const response = {
       statusCode: 200,
       result: { message: 'Producto agregado a favoritos correctamente' },
@@ -117,7 +124,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({
       statusCode: 500,
       result: null,
-      errors: [{ name: 'ServerError', description: 'Error al guardar el favorito' }]
+      errors: [{ name: 'ServerError', message:'Error al guardar el favorito' }]
     }, { status: 500 })
   }
 }

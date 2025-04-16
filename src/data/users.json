@@ -20,6 +20,14 @@
         "description": "Teclado mecánico compacto con switches rojos.",
         "category": "1",
         "image": "https://http2.mlstatic.com/D_NQ_NP_624382-MLA27969303874_082018-O.webp"
+      },
+      {
+        "id": "1",
+        "name": "Logitech MX Keys",
+        "price": 129.99,
+        "description": "Teclado inalámbrico retroiluminado con diseño ergonómico.",
+        "category": "1",
+        "image": "https://m.media-amazon.com/images/I/71zPs9UgSbL._AC_SL1500_.jpg"
       }
     ]
   }

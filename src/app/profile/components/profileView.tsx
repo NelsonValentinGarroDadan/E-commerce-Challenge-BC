@@ -49,7 +49,7 @@ export default function ProfileView(){
     if (!isLogin) return null;
     if(!token) return null;
     return(
-        <section className="section-container flex-col mt-30 gap-4">
+        <section className="section-container flex-col mt-20 gap-4">
             <h1 className="font-roboto text-2xl lg:text-4xl font-bold text-text w-full">
                 Mi cuenta
             </h1> 
@@ -84,12 +84,13 @@ export default function ProfileView(){
                                     <LoaderSpin/>
                             ) : errorFavorites ? ( <div>Error: {errorFavorites.message}</div> )
                             : favorites?.result && favorites?.result.length > 0 ?
-                                <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full py-5 gap-10">
+                                <section className="grid grid-cols-1 lg:grid-cols-2 w-full py-5 gap-2">
                                     {
                                         favorites?.result?.map((product:Product)=>(
                                             <ProductCard 
                                                 key={product.id}
                                                 {...product}
+                                                showFavoriteButton={false}
                                             />
                                         ))
                                     }

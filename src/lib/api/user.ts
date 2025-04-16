@@ -2,6 +2,7 @@ import { User } from '@/types/api/user.type';
 import fs from 'fs';
 import path from 'path';
 import { findProductById } from './products';
+import { Product } from '@/types/api';
 
 const usersPath = path.join(process.cwd(), 'src/data/users.json');
 
@@ -23,24 +24,23 @@ export async function getUserById(userId:string) {
 }
 
 export async function getUserFavorites({ name,category, userId,page = 1, limit = 10 }: {
-  userId:string
-  name?:string
-  category?: string
-  page?: number
-  limit?: number
+  userId:string;
+  name?:string;
+  category?: string;
+  page?: number;
+  limit?: number;
 }){
   const user = await getUserById(userId);
   if(!user) return null;
-  let filtered = user.favorites;
-
-  if (category) {
+  let filtered:Product[] = user.favorites;
+  if (category && category !== 'undefined' ) {
     filtered = filtered.filter((p) => p.category === category);
   }
-
-  if (name) {
-    filtered = filtered.filter((p) => p.name.includes(name));
+  console.log(category)
+  if (name && name !== 'undefined' ) {
+    filtered = filtered.filter((p) => p.name.includes(name ?? ""));
   }
-
+  console.log(name)
   const start = (page - 1) * limit
   const paginated = filtered.slice(start, start + limit)
 
@@ -66,13 +66,13 @@ export async function saveFavoriteProduct({userId, productId}:{userId:string; pr
   // Verificar si el producto ya está en favoritos
   const alreadyFavorite = user.favorites?.some(p => p.id === productId);
   if (alreadyFavorite) {
-    throw new Error('El producto ya está en favoritos');
+    return('El producto ya está en favoritos');
   }
 
   // Buscar el producto completo
-  const product = await findProductById(productId);
+  const product = findProductById(productId);
   if (!product) {
-    throw new Error('Producto no encontrado');
+    return('Producto no encontrado');
   }
 
   // Asegurarse que el campo favorites existe
@@ -88,5 +88,5 @@ export async function saveFavoriteProduct({userId, productId}:{userId:string; pr
 
   // Guardar el archivo
   writeUsers(users);
-
+  return null
 }

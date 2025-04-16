@@ -13,7 +13,7 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import LoaderSpin from "./loaderSpin";
 
-export default function ProductCard({id,image,name,price}:Product) {
+export default function ProductCard({id,image,name,price, showFavoriteButton = true}:Product & { showFavoriteButton?:boolean}) {
     const router = useRouter();
     const {isLogin,token} = useUserStore((state)=>state);
     const { mutate, isPending } = useMutation<ResponseAuthSchema,AxiosError<{ errors: { title: string; description: string }[]}>>({
@@ -68,20 +68,23 @@ export default function ProductCard({id,image,name,price}:Product) {
                             />
                         
                         </Link>
-                        <div className="flex justify-center items-center absolute top-1 right-1 h-7 w-7 z-10">
-                            {
-                                isPending ?
-                                    <LoaderSpin />
-                                :
-                                <button 
-                                    type="button" 
-                                    className="w-full h-full bg-background/80 hover:bg-background rounded-full p-1 cursor-pointer group"
-                                    onClick={()=>mutate()}
-                                >
-                                    <Heart className="h-full w-full text-text/80 group-hover:text-text"/>
-                                </button>
-                            }
-                        </div>
+                        {
+                            showFavoriteButton && 
+                            <div className="flex justify-center items-center absolute top-1 right-1 h-7 w-7 z-10">
+                                {
+                                    isPending ?
+                                        <LoaderSpin />
+                                    :
+                                    <button 
+                                        type="button" 
+                                        className="w-full h-full bg-background/80 hover:bg-background rounded-full p-1 cursor-pointer group"
+                                        onClick={()=>mutate()}
+                                    >
+                                        <Heart className="h-full w-full text-text/80 group-hover:text-text"/>
+                                    </button>
+                                }
+                            </div>
+                        }
                         
                     </div>
                 
