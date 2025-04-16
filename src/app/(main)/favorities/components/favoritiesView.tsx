@@ -1,6 +1,4 @@
 "use client"
-import SearchBar from "@/app/products/components/products/searchBar";
-import SelectCategory from "@/app/products/components/products/selectCategory";
 import LoaderSpin from "@/components/loaderSpin";
 import Pagination from "@/components/pagination";
 import ProductCard from "@/components/productCard";
@@ -12,6 +10,8 @@ import { X } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
+import SelectCategory from "../../products/components/products/selectCategory";
+import SearchBar from "../../products/components/products/searchBar";
 
 export default function FavoritiesVIew(){
     const router = useRouter();
