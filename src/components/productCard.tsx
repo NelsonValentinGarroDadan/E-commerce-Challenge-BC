@@ -45,14 +45,18 @@ export default function ProductCard({id,image,name,price, showFavoriteButton = t
           });
     const {addItem,isOpen, toggleCart} = useCartStore((state)=>state);
     const handleAddItemToCart = () =>{
-        addItem({
-            id,
-            image,
-            name,
-            price,
-            quantity:1,
-        });
-        if(!isOpen) toggleCart();
+        if(isLogin){
+            addItem({
+                id,
+                image,
+                name,
+                price,
+                quantity:1,
+            });
+            if(!isOpen) toggleCart();
+        }else{
+            router.push('/auth')
+        }
     }
     return (
         <div className="w-full bg-text shadow-text shadow-md flex flex-col justify-start">
