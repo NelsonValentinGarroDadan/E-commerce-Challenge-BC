@@ -6,12 +6,33 @@ Este proyecto es una aplicación de e-commerce construida con **Next.js (App Rou
 
 ## 🚀 Tecnologías Usadas
 
-- Next.js 14 (App Router)
+- Next.js 15 (App Router)
+
 - TypeScript
-- Tailwind CSS
+
+- Tailwind CSS 4
+
 - TanStack React Query
+
+- Zustand (manejo de estado global)
+
+- React Hook Form + Zod (formularios y validación)
+
 - Axios
-- ESLint
+
+- Lucide React (iconografía)
+
+- next-themes (modo oscuro/claro)
+
+- tailwind-variants (composición de estilos)
+
+- Sonner (notificaciones)
+
+- ESLint + eslint-config-next
+
+- JWT Decode y bcryptjs (autenticación - si está implementada)
+
+
 
 ---
 
@@ -51,9 +72,9 @@ npm run dev
 
 -  Tema dark/light con animación
 
--  Favoritos (opcional)
+-  Favoritos
 
--  Página de cuenta (opcional)
+-  Página de cuenta
 
 ---
 
@@ -65,8 +86,6 @@ npm run dev
 - features/: Lógica de negocio separada por feature (cart, products, etc.)
 
 - lib/: Configuración de React Query y API
-
-- hooks/: Custom hooks
 
 - types/: Tipado compartido
 
